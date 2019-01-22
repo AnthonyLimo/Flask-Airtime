@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 import africastalking
 
@@ -8,7 +9,7 @@ api_key = ""
 
 africastalking.initialize(username, api_key)
 
-@app.route("/")
+@app.route("/", methods=["POST"])
 def index():
 	if request.method == "POST":
 		airtime_amount = request.form[]
@@ -22,4 +23,4 @@ def index():
 	return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=os.environ.get('PORT'))
